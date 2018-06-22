@@ -1,5 +1,5 @@
 <br> PAT
-<br>I am practice OJ on PAT,this is where I write my answers.
+<br>I am practicing OJ on PAT,this is where I write my answers.
 <br><br>WEBSITE:
 <br>https://pintia.cn/problem-sets/994805260223102976/problems
 <br>https://pintia.cn/problem-sets/994805342720868352/problems
