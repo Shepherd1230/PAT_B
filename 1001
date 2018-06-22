@@ -1,0 +1,57 @@
+#include<iostream>
+#include<string.h>
+
+using namespace std;
+
+int get_temps(int n,int *p)
+{
+	int times=0;	
+	while(true)
+	{
+		if(n==1)
+		{
+
+			/*
+						if(times==0)
+			{
+				*p=1;
+				times++;
+				return times;				
+			}
+			else
+			{
+				return times;
+			}
+			*/
+			return times;
+		}
+		if(n%2==0)
+		{
+			n=n/2;
+			*p=n;
+			p++;
+			times++;
+		}
+		else
+		{
+			n=(3*n+1)/2;			
+			*p=n;
+			p++;
+			times++;
+		}
+	}
+	return times;
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	int temps[100];
+	memset(temps,-1,sizeof(temps));
+	
+	int times=get_temps(n,temps);
+	cout<<times;
+	
+	return 0;
+}
