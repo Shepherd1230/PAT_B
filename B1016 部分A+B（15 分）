@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+void getP(int a,int da,int &pa)
+{
+	while(true)
+	{
+		if(a%10==da)
+		{
+			pa=pa*10+da;
+		}
+		a=a/10;
+		if(a==0)
+		{
+			break;
+		}
+	}
+
+}
+
+int main()
+{
+	int a=0,da=0,b=0,db=0,pa=0,pb=0;
+	cin>>a>>da;
+	cin>>b>>db;	
+
+	getP(a,da,pa);
+	getP(b,db,pb);
+	
+	cout<<pa+pb<<endl;
+	return 0;
+}
