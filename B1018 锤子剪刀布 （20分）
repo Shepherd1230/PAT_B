@@ -1,0 +1,104 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int cmp(char temp1,char temp2)
+{
+	if ((temp1=='C' && temp2=='C')||(temp1=='J' &&temp2=='J')||(temp1=='B' &&temp2=='B'))
+	{
+		return 0;
+	}
+	
+	if((temp1=='C' && temp2=='J')||(temp1=='J' && temp2=='B')||(temp1=='B' && temp2=='C'))
+	{
+		return 1;
+	}
+	
+	if((temp1=='C' && temp2=='B')||(temp1=='J' && temp2=='C')||(temp1=='B' && temp2=='J'))
+	{
+		return -1;
+	}
+}
+
+
+void chagRecord(vector<int>&bcj,char temp1)
+{
+	if(temp1=='B')
+	{
+		bcj.at(0)++;
+	}
+	else if(temp1=='C')
+	{
+		bcj.at(1)++;
+	}
+	else 
+	{
+		bcj.at(2)++;
+	}
+}
+
+void coutBcj(vector<int>bcj)
+{
+	int max=0;
+	for(int i=0;i<bcj.size();i++)
+	{
+		if(bcj.at(i)>bcj.at(max))
+		{
+			max=i;
+		}
+	}
+	switch (max)
+		{
+			case 0:cout<<"B";break;
+			case 1:cout<<"C";break;
+			case 2:cout<<"J";break;	
+		}
+
+}
+
+int main()
+{	
+	int n;
+	cin>>n;
+	
+	vector<int>result1(3,0);// 记录甲方胜负平的次数
+	vector<int>result2(3,0);//记录乙方胜负平的次数 
+	
+	vector<int>bcj1(3,0);//记录甲方胜的记录中石头、剪刀、布的次数 
+	vector<int>bcj2(3,0);//记录乙方胜的记录中石头、剪刀、布的次数	 
+	
+	for(int i=0;i<n;i++)
+	{
+		char temp1,temp2;
+		cin>>temp1>>temp2;
+		if(cmp(temp1,temp2)==1)
+		{
+			result1.at(0)=result1.at(0)+1;
+			result2.at(1)=result2.at(1)+1;
+			chagRecord(bcj1,temp1);
+		}
+		else if(cmp(temp1,temp2)==0)
+		{
+			result1.at(2)++;
+			result2.at(2)++;			
+		}
+		else
+		{
+			result1.at(1)++;
+			result2.at(0)++;
+			chagRecord(bcj2,temp2);
+		}
+	}
+	
+	//输出甲乙胜负平局数
+	cout<<result1.at(0)<<" "<<result1.at(2)<<" "<<result1.at(1)<<endl;
+	cout<<result2.at(0)<<" "<<result2.at(2)<<" "<<result2.at(1)<<endl;
+	
+	//输出获胜次数最多的手势 
+	coutBcj(bcj1);
+	cout<<" ";
+	coutBcj(bcj2);
+	
+	
+	return 0;
+}
