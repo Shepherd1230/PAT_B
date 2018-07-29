@@ -1,0 +1,49 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+	int array[1000];
+	int a=0,b=0,cnt=0;
+	while(scanf("%d %d",&a,&b)!=EOF)
+	{
+		cnt++;
+		array[2*cnt-2]=a;
+		array[2*cnt-1]=b;
+	}
+	
+	
+	vector<int>results;
+	for(int i=0;i<cnt*2;i=i+2)
+	{
+		int coe=array[i];
+		int index=array[i+1];
+		if(index==0)
+		{
+			coe=0;
+			index=0;
+			if(results.size()!=0)
+			{
+				break;
+			}
+		}
+		else
+		{
+			coe=coe*index;
+			index=index-1;
+		}
+		results.push_back(coe);
+		results.push_back(index);
+	}
+	
+	for(int i=0;i<results.size();i++)
+	{
+		cout<<results.at(i);
+		if(i<results.size()-1)
+		{
+			cout<<" ";
+		}
+	}
+	return 0;
+}
