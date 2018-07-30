@@ -1,0 +1,60 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+struct Student
+{
+	string stuNum;
+	int first;
+	int second;
+};
+
+
+int main()
+{
+	int n;//the total number of students
+	cin>>n;
+	vector<Student>student;//the whole students
+	
+	//student message input
+	string stuNum;
+	int first;
+	int second;
+	for(int i=0;i<n;i++)
+	{
+		Student stu;
+		cin>>stuNum>>first>>second;
+		stu.stuNum=stuNum;
+		stu.first=first;
+		stu.second=second;
+		student.push_back(stu);
+	}
+	
+
+	//target message input
+	int m;
+	cin>>m;
+	vector<int>findlist;
+	for(int i=0;i<m;i++)
+	{
+		int temp;
+		cin>>temp;
+		findlist.push_back(temp);		
+	}
+	
+	//find the number and print
+	for(int i=0;i<m;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			if(findlist[i]==student.at(j).first)
+			{
+				cout<<student.at(j).stuNum<<" "<<student.at(j).second<<endl;
+			}
+		}
+	}
+	
+		
+	return 0;
+}
