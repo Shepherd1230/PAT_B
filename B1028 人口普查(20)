@@ -1,0 +1,70 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include<stdio.h>
+using namespace std;
+
+struct People
+{
+	string name;
+	int year;
+	int month;
+	int day;
+	int score;
+};
+
+void copyTo(People &p1,People &p2)
+{
+	p2.name=p1.name;
+	p2.year=p1.year;
+	p2.month=p1.month;
+	p2.day=p1.day;
+	p2.score=p1.score;
+}
+
+int main()
+{		
+	int n;
+	cin>>n;
+	
+	vector<People>list;
+	
+	People oldest,youngest;
+	oldest.score=20140909;
+	youngest.score=18140808;
+	int cnt=0;
+	for(int i=0;i<n;i++)
+	{
+		People temp;
+		cin>>temp.name;
+		scanf("%d/%d/%d",&temp.year,&temp.month,&temp.day);	
+		temp.score=(temp.year*100+temp.month)*100+temp.day;
+		
+
+		if(temp.score<18140906 || temp.score>20140906)
+		{
+			continue;
+		}
+		else
+		{
+			cnt++;
+			if(temp.score<oldest.score)
+			{
+				copyTo(temp,oldest);
+			}
+			if(temp.score>youngest.score)
+			{
+				copyTo(temp,youngest);
+			}
+		}
+	}
+	if(cnt==0)
+	{
+		cout<<0<<endl;
+		return 0;
+	}
+	
+	cout<<cnt<<" "<<oldest.name<<" "<<youngest.name;
+	
+	return 0;
+}
