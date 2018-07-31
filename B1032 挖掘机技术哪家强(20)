@@ -1,0 +1,34 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include<stdio.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	
+	vector<int>score(n+1,0);
+		
+	for(int i=0;i<n;i++)
+	{
+		int index,subscore;
+		cin>>index>>subscore;
+		
+		score.at(index)=score.at(index)+subscore;
+	}
+	
+	int max=0;
+	
+	for(int i=0;i<n+1;i++)
+	{
+		if(score.at(i)>score.at(max))
+		{
+			max=i;
+		}
+	}	
+	cout<<max<<" "<<score.at(max)<<endl;
+	
+	return 0;
+}
